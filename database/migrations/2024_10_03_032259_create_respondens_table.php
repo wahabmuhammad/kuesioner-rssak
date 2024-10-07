@@ -11,9 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('respondens', function (Blueprint $table) {
+        Schema::create('responden', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('responden');
+            $table->integer('nama_poliklinik');
+            $table->integer('nama_dokter');
+            $table->string('nama_pasien');
+            $table->string('no_telp');
+            $table->text('kritik_saran');
+            $table->integer('kd_responden');
+            // $table->timestamps();
         });
     }
 

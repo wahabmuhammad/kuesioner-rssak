@@ -10,12 +10,12 @@
     <meta name="theme-color" content="#0B1354">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Rumah Sakit Sarkies 'Aisyiyah Kudus">
-    <link rel="apple-touch-icon" href="{{asset('assets/Logo_RSSA.png')}}">
-    <link rel="shortcut icon" href="{{asset('assets/Logo_RSSA.png')}}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/Logo_RSSA.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/Logo_RSSA.png') }}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -47,12 +47,14 @@
         href="https://kuesionersolo.rs-jih.co.id/assets/front/vendors/jquery-nice-select/nice-select.css">
 
     <!-- style -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     <!-- jquery -->
     <script src="https://kuesionersolo.rs-jih.co.id/assets/front/vendors/jquery/jquery.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script> --}}
 
-   
+
 </head>
 
 <body>
@@ -67,17 +69,16 @@
                 }
             </style>
 
-            <section class="section-md bg-image center intro"
-                data-background="{{asset('assets/P10.png')}}"
-                style="background-image: url(&quot;{{asset('assets/P10.png')}}&quot;);">
+            <section class="section-md bg-image center intro" data-background="{{ asset('assets/P10.png') }}"
+                style="background-image: url(&quot;{{ asset('assets/P10.png') }}&quot;);">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 col-md-10 m-auto">
                             <div class="block-text text-center">
                                 <a href="https://www.rs-jih.co.id/rsjihsolo/">
-                                    <img data-src="{{asset('assets/logo center HD.png')}}"
-                                        class="img-fluid mb-5 lazyloaded"
-                                        src="{{asset('assets/logo center HD.png')}}" style="width:70%; height: auto;">
+                                    <img data-src="{{ asset('assets/logo center HD.png') }}"
+                                        class="img-fluid mb-5 lazyloaded" src="{{ asset('assets/logo center HD.png') }}"
+                                        style="width:70%; height: auto;">
                                 </a>
                                 <p class="section-subheading font-weight-800 mb-3">BERIKAN PENILAIAN PADA PELAYANAN KAMI
                                 </p>
@@ -94,7 +95,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 m-auto">
-                            <form  id="form-kuesioner" class="form-style" novalidate="novalidate">
+                            <form id="form-kuesioner" class="form-style" novalidate="novalidate">
                                 @csrf
                                 @method('POST')
                                 <input type="hidden" name="id_survey" value="2">
@@ -121,56 +122,21 @@
                                                 <select name="nama_poliklinik" id="nama_poliklinik"
                                                     class="form-control">
                                                     <option value="">Pilih poliklinik</option>
-                                                    <option value="1">Penyakit Dalam</option>
-                                                    <option value="2">Anak</option>
-                                                    <option value="3">Pain Centre</option>
-                                                    <option value="4">Bedah</option>
-                                                    <option value="5">Saraf</option>
-                                                    <option value="6">Gigi &amp; Mulut</option>
-                                                    <option value="7">Jantung</option>
-                                                    <option value="8">Kebidanan &amp; Kandungan</option>
-                                                    <option value="9">Kulit &amp; Kelamin</option>
-                                                    <option value="10">Mata</option>
-                                                    <option value="11">Paru - Paru</option>
-                                                    <option value="12">Psikiatri</option>
-                                                    <option value="13">Radiologi</option>
-                                                    <option value="14">THT</option>
-                                                    <option value="15">Umum</option>
-                                                    <option value="16">UGD</option>
-                                                    <option value="17">KIA</option>
-                                                    <option value="18">Rawat Jalan</option>
-                                                    <option value="19">Poli Vaksin</option>
-                                                    <option value="20">HLC - Medical Check Up</option>
-                                                    <option value="21">Rawat Inap</option>
+                                                    @foreach ($poli as $poli)
+                                                        <option value="{{ $poli->id }}">{{ $poli->nama_ruangan }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="control-label">Nama Dokter</label>
-                                                <select name="nama_dokter" id="nama_dokter"
-                                                    class="form-control">
+                                                <select name="nama_dokter" id="nama_dokter" class="form-control">
                                                     <option value="">Pilih nama Dokter</option>
-                                                    <option value="1">Penyakit Dalam</option>
-                                                    <option value="2">Anak</option>
-                                                    <option value="3">Pain Centre</option>
-                                                    <option value="4">Bedah</option>
-                                                    <option value="5">Saraf</option>
-                                                    <option value="6">Gigi &amp; Mulut</option>
-                                                    <option value="7">Jantung</option>
-                                                    <option value="8">Kebidanan &amp; Kandungan</option>
-                                                    <option value="9">Kulit &amp; Kelamin</option>
-                                                    <option value="10">Mata</option>
-                                                    <option value="11">Paru - Paru</option>
-                                                    <option value="12">Psikiatri</option>
-                                                    <option value="13">Radiologi</option>
-                                                    <option value="14">THT</option>
-                                                    <option value="15">Umum</option>
-                                                    <option value="16">UGD</option>
-                                                    <option value="17">KIA</option>
-                                                    <option value="18">Rawat Jalan</option>
-                                                    <option value="19">Poli Vaksin</option>
-                                                    <option value="20">HLC - Medical Check Up</option>
-                                                    <option value="21">Rawat Inap</option>
+                                                    @foreach ($dokters as $dokter)
+                                                        <option value="{{ $dokter->id }}">{{ $dokter->namadokter }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 
@@ -200,7 +166,7 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <input type="hidden" name="question[1]" value="16">
+                                    <input type="hidden" name="question[1]" value="1">
                                     <label class="control-label text-2">Kepuasan Rumah Sakit</label>
 
                                     <div class="flex-5-column">
@@ -211,9 +177,9 @@
 
                                                 <div class="radio-tile feed1">
                                                     <label for="question16" class="radio-tile-label">
-                                                        <img data-src="{{asset('assets/sangat-tidak-puas-OSHW79BG.svg')}}"
+                                                        <img data-src="{{ asset('assets/sangat-tidak-puas-OSHW79BG.svg') }}"
                                                             class="img-fluid img-emoticon lazyloaded"
-                                                            src="{{asset('assets/sangat-tidak-puas-OSHW79BG.svg')}}">
+                                                            src="{{ asset('assets/sangat-tidak-puas-OSHW79BG.svg') }}">
                                                         <p class="section-description-xs text-center mt-2 mb-0">Sangat
                                                             tidak puas</p>
                                                     </label>
@@ -227,9 +193,9 @@
 
                                                 <div class="radio-tile feed1">
                                                     <label for="question16" class="radio-tile-label">
-                                                        <img data-src="{{asset('assets/tidak-puas-WON8YKBP.svg')}}"
+                                                        <img data-src="{{ asset('assets/tidak-puas-WON8YKBP.svg') }}"
                                                             class="img-fluid img-emoticon lazyloaded"
-                                                            src="{{asset('assets/tidak-puas-WON8YKBP.svg')}}">
+                                                            src="{{ asset('assets/tidak-puas-WON8YKBP.svg') }}">
                                                         <p class="section-description-xs text-center mt-2 mb-0">Tidak
                                                             puas</p>
                                                     </label>
@@ -243,9 +209,9 @@
 
                                                 <div class="radio-tile feed1">
                                                     <label for="question16" class="radio-tile-label">
-                                                        <img data-src="{{asset('assets/netral-FZC3L8X4.svg')}}"
+                                                        <img data-src="{{ asset('assets/netral-FZC3L8X4.svg') }}"
                                                             class="img-fluid img-emoticon lazyloaded"
-                                                            src="{{asset('assets/netral-FZC3L8X4.svg')}}">
+                                                            src="{{ asset('assets/netral-FZC3L8X4.svg') }}">
                                                         <p class="section-description-xs text-center mt-2 mb-0">Netral
                                                         </p>
                                                     </label>
@@ -259,9 +225,9 @@
 
                                                 <div class="radio-tile feed1">
                                                     <label for="question16" class="radio-tile-label">
-                                                        <img data-src="{{asset('assets/puas-7KQ64Y8R.svg')}}"
+                                                        <img data-src="{{ asset('assets/puas-7KQ64Y8R.svg') }}"
                                                             class="img-fluid img-emoticon lazyloaded"
-                                                            src="{{asset('assets/puas-7KQ64Y8R.svg')}}">
+                                                            src="{{ asset('assets/puas-7KQ64Y8R.svg') }}">
                                                         <p class="section-description-xs text-center mt-2 mb-0">Puas
                                                         </p>
                                                     </label>
@@ -275,9 +241,9 @@
 
                                                 <div class="radio-tile feed1">
                                                     <label for="question16" class="radio-tile-label">
-                                                        <img data-src="{{asset('assets/sangat-puas-QM3CKG0R.svg')}}"
+                                                        <img data-src="{{ asset('assets/sangat-puas-QM3CKG0R.svg') }}"
                                                             class="img-fluid img-emoticon lazyloaded"
-                                                            src="{{asset('assets/sangat-puas-QM3CKG0R.svg')}}">
+                                                            src="{{ asset('assets/sangat-puas-QM3CKG0R.svg') }}">
                                                         <p class="section-description-xs text-center mt-2 mb-0">Sangat
                                                             puas</p>
                                                     </label>
@@ -299,9 +265,9 @@
 
                                                 <div class="radio-tile feed2">
                                                     <label for="question17" class="radio-tile-label">
-                                                        <img data-src="{{asset('assets/sangat-tidak-puas-OSHW79BG.svg')}}"
+                                                        <img data-src="{{ asset('assets/sangat-tidak-puas-OSHW79BG.svg') }}"
                                                             class="img-fluid img-emoticon ls-is-cached lazyloaded"
-                                                            src="{{asset('assets/sangat-tidak-puas-OSHW79BG.svg')}}">
+                                                            src="{{ asset('assets/sangat-tidak-puas-OSHW79BG.svg') }}">
                                                         <p class="section-description-xs text-center mt-2 mb-0">Sangat
                                                             tidak puas</p>
                                                     </label>
@@ -728,12 +694,12 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <input type="hidden" name="question[7]" value="22">
+                                    {{-- <input type="hidden" name="question[7]" value="22"> --}}
                                     <h2 class="section-heading-sm font-weight-800">Pelayanan Penunjang</h2>
 
                                     <div class="manp">
-                                        <input type="radio" name="rate[7]" id="question22" value="0"
-                                            class="radio-button" checked="">
+                                        {{-- <input type="radio" name="rate[7]" id="question22" value="0"
+                                            class="radio-button" checked=""> --}}
                                     </div>
                                 </div>
 
@@ -1197,7 +1163,7 @@
 
                     $('#form-kuesioner').submit(function(e) {
                         e.preventDefault();
-                        console.log()
+                        // console.log()
                         var fieldset = $(this).parents('fieldset');
                         var indexfieldset = fieldset.index();
                         if (jQuery("#form-kuesioner").valid()) {
@@ -1207,10 +1173,19 @@
                                 method: 'POST',
                                 data: new FormData(this),
                                 dataType: 'json',
+                                cache: false,
                                 contentType: false,
                                 processData: false,
                                 success: function(response) {
-                                    console.log(response)
+                                    // var status = response.split("|");
+                                    // console.log(response);
+                                    Swal.fire({
+                                        icon: response.status,
+                                        title: response.status,
+                                        text: response.message,
+                                        // html: `<strong><h2>${status[1]}</h2></strong>`
+                                    })
+                                    // setTimeout("location.href='kuesioner-rssak/public'");
                                     // top.location.href =
                                     //     "https://kuesionersolo.rs-jih.co.id/finish/finish/" +
                                     //     'rawat-jalan';
@@ -1274,6 +1249,8 @@
         };
     </script> -->
 
+    {{-- sweet alert cdn --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- jquery validation -->
     <script src="https://kuesionersolo.rs-jih.co.id/assets/front/vendors/jquery-validation/jquery.validate.min.js"></script>
     <script src="https://kuesionersolo.rs-jih.co.id/assets/front/vendors/jquery-validation/additional-methods.js"></script>

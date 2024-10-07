@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.main');
-});
-// Route::get('/', [kuesionerController::class, 'index']);
+// Route::get('/', function () {
+//     return view('layout.main');
+// });
+Route::get('/', [kuesionerController::class, 'index'])->name('index');
 Route::post('/public/kuesioner_post', [kuesionerController::class,'post'])->name('store');
